@@ -5,11 +5,46 @@ using UnityEngine;
 
 public class PathFinder : MonoBehaviour
 {
+    [SerializeField] WayPoint StartPoint, Endpoint;
+
+    Vector2Int[] directions =
+    {
+        Vector2Int.up,
+        Vector2Int.right,
+        Vector2Int.left,
+        Vector2Int.down
+    };
+
     Dictionary<Vector2Int, WayPoint> grid = new Dictionary<Vector2Int, WayPoint>();
     // Start is called before the first frame update
     void Start()
     {
         LoadBlocks();
+        ColorStartPointEndPoint();
+        ExploreThyNeighbor();
+    }
+
+    private void ExploreThyNeighbor()
+    {
+        foreach (Vector2Int direction in directions)
+        {
+            Vector2Int ExplorationCoordinates = StartPoint.GetGridPos() + direction;
+            try
+            {
+                grid[ExplorationCoordinates].SetTopColor(Color.black);
+            }
+            catch
+            {
+
+            }
+           
+        }
+    }
+
+    private void ColorStartPointEndPoint()
+    {
+        StartPoint.SetTopColor(Color.blue);
+        Endpoint.SetTopColor(Color.red);
     }
 
     private void LoadBlocks()
