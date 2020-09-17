@@ -8,6 +8,7 @@ public class WayPoint : MonoBehaviour
 
     Vector2Int gridPos;
 
+    public bool isExplored = false;
   
 
     public Vector2Int GetGridPos()
