@@ -6,6 +6,8 @@ using UnityEngine;
 public class PathFinder : MonoBehaviour
 {
     [SerializeField] WayPoint StartPoint, Endpoint;
+    Queue<WayPoint> queue = new Queue<WayPoint>();
+    [SerializeField] bool isRunning = true;
 
     Vector2Int[] directions =
     {
@@ -21,17 +23,42 @@ public class PathFinder : MonoBehaviour
     {
         LoadBlocks();
         ColorStartPointEndPoint();
-        ExploreThyNeighbor();
+        
+        FindPath();
     }
 
-    private void ExploreThyNeighbor()
+    private void FindPath()
     {
+        queue.Enqueue(StartPoint);
+        while (queue.Count > 0 && isRunning)
+                {
+            var searchCenter = queue.Dequeue();
+            searchCenter.isExplored = true;
+            print(searchCenter);
+            HaltFindPath(searchCenter);
+            ExploreThyNeighbor(searchCenter);
+        } 
+        
+    }
+
+    private void HaltFindPath(WayPoint searchCenter)
+    {
+       if (searchCenter == Endpoint)
+            {
+            print("end was found");
+            isRunning = false;
+        }
+    }
+
+    private void ExploreThyNeighbor(WayPoint from)
+    {
+        if (!isRunning) { return; }
         foreach (Vector2Int direction in directions)
         {
-            Vector2Int ExplorationCoordinates = StartPoint.GetGridPos() + direction;
+            Vector2Int ExplorationCoordinates = from.GetGridPos() + direction;
             try
             {
-                grid[ExplorationCoordinates].SetTopColor(Color.black);
+                QueueNewNeighbor(ExplorationCoordinates);
             }
             catch
             {
@@ -39,6 +66,15 @@ public class PathFinder : MonoBehaviour
             }
            
         }
+    }
+
+    private void QueueNewNeighbor(Vector2Int ExplorationCoordinates)
+    {
+        WayPoint neighbor = grid[ExplorationCoordinates];
+        if (neighbor isExplored) { return;  }
+        neighbor.SetTopColor(Color.black);
+        queue.Enqueue(neighbor);
+        print("Queing" + neighbor);
     }
 
     private void ColorStartPointEndPoint()
@@ -62,12 +98,8 @@ public class PathFinder : MonoBehaviour
                 grid.Add(gridPos, wayPoint);
             }
         }
-        print("Loaded " + grid.Count + "blocks");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         
     }
+
+   
 }

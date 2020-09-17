@@ -8,7 +8,6 @@ public class WayPoint : MonoBehaviour
 
     Vector2Int gridPos;
 
-    // Start is called before the first frame update
   
 
     public Vector2Int GetGridPos()
