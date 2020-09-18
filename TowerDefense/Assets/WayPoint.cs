@@ -12,6 +12,8 @@ public class WayPoint : MonoBehaviour
 
     public WayPoint exploredFrom;
 
+    
+
     public Vector2Int GetGridPos()
     {
         return new Vector2Int (

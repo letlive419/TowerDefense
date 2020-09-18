@@ -43,7 +43,7 @@ public class editorsnap : MonoBehaviour
 
         TextMesh textMesh = GetComponentInChildren<TextMesh>();
 
-        int gridSize = wayPoint.GetGridSize();
+       
 
         string labelCube = wayPoint.GetGridPos().x + "," + wayPoint.GetGridPos().y;
 
