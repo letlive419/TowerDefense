@@ -12,7 +12,13 @@ public class Tower : MonoBehaviour
     void Update()
     {
         lookAtEnemy();
+        ShootEnemy();
             
+    }
+
+    private void ShootEnemy()
+    {
+       // objectToPan.transform
     }
 
     private void lookAtEnemy()
