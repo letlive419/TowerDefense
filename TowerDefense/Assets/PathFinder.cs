@@ -13,12 +13,22 @@ public class PathFinder : MonoBehaviour
 
     public List<WayPoint> GetPath()
     {
-        LoadBlocks();
-        ColorStartPointEndPoint();
+        if (path.Count == 0)
+        {
 
-        FindPath();
-        CreateThePath();
-        return path;
+            LoadBlocks();
+            ColorStartPointEndPoint();
+
+            FindPath();
+            CreateThePath();
+            return path;
+
+        }
+        else
+        {
+            return path;
+        }
+    
     }
 
     Vector2Int[] directions =

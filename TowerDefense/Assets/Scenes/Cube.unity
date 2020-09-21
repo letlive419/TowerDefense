@@ -452,6 +452,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27ded13c1726049ec874e5ce068868c2, type: 3}
+--- !u!198 &114112263 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4070342781245235143, guid: 47fa1b5ea106747da8241403cfa38764, type: 3}
+  m_PrefabInstance: {fileID: 1060968241}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &381482096
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1020,6 +1025,10 @@ PrefabInstance:
       propertyPath: targetEnemy
       value: 
       objectReference: {fileID: 4042032453452108244}
+    - target: {fileID: 1914175582404541722, guid: 47fa1b5ea106747da8241403cfa38764, type: 3}
+      propertyPath: projectileParticle
+      value: 
+      objectReference: {fileID: 114112263}
     - target: {fileID: 1914175582404541723, guid: 47fa1b5ea106747da8241403cfa38764, type: 3}
       propertyPath: m_Name
       value: Tower (1)
@@ -2015,10 +2024,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tower
       objectReference: {fileID: 0}
-    - target: {fileID: 4070342781245235143, guid: 47fa1b5ea106747da8241403cfa38764, type: 3}
-      propertyPath: CollisionModule.enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47fa1b5ea106747da8241403cfa38764, type: 3}
 --- !u!1001 &2253495504657284568
@@ -2076,6 +2081,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4847533848638004331, guid: c5f1c869f4d5c45f587707f1c5b84eef, type: 3}
+      propertyPath: hitPoints
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5f1c869f4d5c45f587707f1c5b84eef, type: 3}
 --- !u!1 &4040607667389972490 stripped
@@ -2107,7 +2116,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4040607667389972490}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 15, y: 14, z: 13}
