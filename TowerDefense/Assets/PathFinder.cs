@@ -36,10 +36,12 @@ public class PathFinder : MonoBehaviour
     private void CreateThePath()
     {
         path.Add(Endpoint);
+
         WayPoint previous = Endpoint.exploredFrom;
         while (previous != StartPoint)
         {
             previous = previous.exploredFrom;
+            path.Add(previous);
         }
         path.Add(StartPoint);
         path.Reverse();
