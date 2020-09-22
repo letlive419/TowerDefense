@@ -46,14 +46,18 @@ public class PathFinder : MonoBehaviour
     private void CreateThePath()
     {
         path.Add(Endpoint);
+        Endpoint.isPlaceable = false;
 
         WayPoint previous = Endpoint.exploredFrom;
         while (previous != StartPoint)
         {
             previous = previous.exploredFrom;
+            previous.isPlaceable = false;
+
             path.Add(previous);
         }
         path.Add(StartPoint);
+        StartPoint.isPlaceable = false;
         path.Reverse();
     }
 
@@ -75,7 +79,7 @@ public class PathFinder : MonoBehaviour
     {
        if (searchCenter == Endpoint)
             {
-            print("end was found");
+            
             isRunning = false;
         }
     }

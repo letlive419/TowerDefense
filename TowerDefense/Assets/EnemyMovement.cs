@@ -31,7 +31,7 @@ public class EnemyMovement : MonoBehaviour
     private void OnParticleCollision(GameObject other)
     {
 
-        print("hit");
+        
         hitPoints--;
 
         if (hitPoints == 0)

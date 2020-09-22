@@ -12,7 +12,18 @@ public class WayPoint : MonoBehaviour
 
     public WayPoint exploredFrom;
 
-    
+    public bool isPlaceable = true;
+
+    void OnMouseOver()
+    {
+        var mouseClicked = Input.GetMouseButtonDown(0);
+        if (mouseClicked == true)
+        {
+            print(gameObject.name + "clicked");
+        }
+    }
+
+   
 
     public Vector2Int GetGridPos()
     {
