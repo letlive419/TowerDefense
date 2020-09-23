@@ -17,7 +17,7 @@ public class WayPoint : MonoBehaviour
 
     public bool isPlaceable = true;
 
-    
+    [SerializeField] Vector3 spawnTower = new Vector3(0,-5,0);
 
     void OnMouseOver()
     {
@@ -28,7 +28,7 @@ public class WayPoint : MonoBehaviour
            {
 
                 print(gameObject.name + "clicked");
-                Instantiate(towerPrefab, transform.position, Quaternion.identity);
+                Instantiate(towerPrefab, transform.position + spawnTower, Quaternion.identity);
                 isPlaceable = false;
            }
            else

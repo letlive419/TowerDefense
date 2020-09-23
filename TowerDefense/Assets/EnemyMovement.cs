@@ -7,6 +7,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] int hitPoints = 3;
+    [SerializeField] ParticleSystem bulletsHit;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +25,7 @@ public class EnemyMovement : MonoBehaviour
             transform.position = wayPoint.transform.position;
 
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
         }
 
     }
@@ -33,9 +34,11 @@ public class EnemyMovement : MonoBehaviour
 
         
         hitPoints--;
+        bulletsHit.Play();
 
         if (hitPoints == 0)
         {
+            
             Destroy(gameObject);
         }
     }
