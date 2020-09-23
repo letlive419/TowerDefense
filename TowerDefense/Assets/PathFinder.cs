@@ -51,10 +51,11 @@ public class PathFinder : MonoBehaviour
         WayPoint previous = Endpoint.exploredFrom;
         while (previous != StartPoint)
         {
-            previous = previous.exploredFrom;
             previous.isPlaceable = false;
 
             path.Add(previous);
+            previous = previous.exploredFrom;
+           
         }
         path.Add(StartPoint);
         StartPoint.isPlaceable = false;
