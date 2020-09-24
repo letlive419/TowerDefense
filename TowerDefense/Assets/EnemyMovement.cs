@@ -8,6 +8,7 @@ public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] int hitPoints = 3;
     [SerializeField] ParticleSystem bulletsHit;
+    [SerializeField] ParticleSystem death;
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +39,8 @@ public class EnemyMovement : MonoBehaviour
 
         if (hitPoints == 0)
         {
-            
+            var deathfx = Instantiate(death, transform.position, Quaternion.identity);
+            deathfx.Play();
             Destroy(gameObject);
         }
     }
