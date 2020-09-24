@@ -26,8 +26,9 @@ public class EnemyMovement : MonoBehaviour
             transform.position = wayPoint.transform.position;
 
 
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
         }
+        Destroy(gameObject);
 
     }
     private void OnParticleCollision(GameObject other)
@@ -41,6 +42,8 @@ public class EnemyMovement : MonoBehaviour
         {
             var deathfx = Instantiate(death, transform.position, Quaternion.identity);
             deathfx.Play();
+            float deathPS = deathfx.main.duration;
+            Destroy(deathfx.gameObject, deathPS);
             Destroy(gameObject);
         }
     }

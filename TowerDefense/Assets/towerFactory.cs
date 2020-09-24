@@ -8,6 +8,8 @@ public class towerFactory : MonoBehaviour
 
     [SerializeField] Tower towerPrefab;
 
+    [SerializeField] Transform towerParent;
+
     Vector3 spawnTower = new Vector3(0, -5, 0);
 
     Queue<Tower> towerQueue = new Queue<Tower>();
@@ -19,24 +21,34 @@ public class towerFactory : MonoBehaviour
 
         if (numOfTowers < maxOfTowers)
         {
-
-
-            var addedTower = Instantiate(towerPrefab, baseWayPoint.transform.position + spawnTower, Quaternion.identity);
-
-            baseWayPoint.isPlaceable = false;
-            towerQueue.Enqueue(addedTower);
-            
+            InstantiateNewTower(baseWayPoint);
         }
         else
         {
-            Debug.Log("number of towers maxed.");
-
-            var oldTower = towerQueue.Dequeue();
-
-
-
-            towerQueue.Enqueue(oldTower);
+            MoveOldTower(baseWayPoint);
         }
     }
 
+    private void MoveOldTower(WayPoint newBaseWayPoint)
+    {
+        Debug.Log("number of towers maxed.");
+
+        var oldTower = towerQueue.Dequeue();
+        oldTower.baseWayPoint.isPlaceable = true;
+        newBaseWayPoint.isPlaceable = false;
+
+        oldTower.baseWayPoint = newBaseWayPoint;
+        oldTower.transform.position = newBaseWayPoint.transform.position;
+        towerQueue.Enqueue(oldTower);
+    }
+
+    private void InstantiateNewTower(WayPoint baseWayPoint)
+    {
+        var newTower = Instantiate(towerPrefab, baseWayPoint.transform.position + spawnTower, Quaternion.identity);
+        newTower.transform.parent = towerParent;
+
+        newTower.baseWayPoint = baseWayPoint;
+        baseWayPoint.isPlaceable = false;
+        towerQueue.Enqueue(newTower);
+    }
 }
