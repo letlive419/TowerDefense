@@ -6,29 +6,36 @@ public class towerFactory : MonoBehaviour
 {
     [SerializeField] int maxOfTowers = 5;
 
-    [SerializeField] GameObject towerPrefab;
+    [SerializeField] Tower towerPrefab;
 
     Vector3 spawnTower = new Vector3(0, -5, 0);
+
+    Queue<Tower> towerQueue = new Queue<Tower>();
 
     public void addTower(WayPoint baseWayPoint)
     {
 
-        var createdTowers = FindObjectsOfType<Tower>();
-        int numOfTowers = createdTowers.Length;
-        
+        int numOfTowers = towerQueue.Count;
 
         if (numOfTowers < maxOfTowers)
         {
 
 
-            Instantiate(towerPrefab, baseWayPoint.transform.position + spawnTower, Quaternion.identity);
+            var addedTower = Instantiate(towerPrefab, baseWayPoint.transform.position + spawnTower, Quaternion.identity);
 
             baseWayPoint.isPlaceable = false;
-            print(numOfTowers);
+            towerQueue.Enqueue(addedTower);
+            
         }
         else
         {
             Debug.Log("number of towers maxed.");
+
+            var oldTower = towerQueue.Dequeue();
+
+
+
+            towerQueue.Enqueue(oldTower);
         }
     }
 

@@ -724,6 +724,7 @@ GameObject:
   m_Component:
   - component: {fileID: 681252949}
   - component: {fileID: 681252950}
+  - component: {fileID: 681252951}
   m_Layer: 0
   m_Name: World
   m_TagString: Untagged
@@ -781,6 +782,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartPoint: {fileID: 8378753329323098474}
   Endpoint: {fileID: 1820091960}
+--- !u!114 &681252951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681252948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 221dcac8524464d15b26175557809871, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxOfTowers: 5
+  towerPrefab: {fileID: 0}
 --- !u!1001 &707181054
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2046,10 +2061,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6097452207696795161, guid: 74ec4daa3496e4340b9bfd7e8a3b51e0, type: 3}
-      propertyPath: CollisionModule.minKillSpeed
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 7845907493134335758, guid: 74ec4daa3496e4340b9bfd7e8a3b51e0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10
